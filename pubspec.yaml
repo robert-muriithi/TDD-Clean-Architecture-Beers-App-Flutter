@@ -1,0 +1,35 @@
+name: beers_flutter
+description: A Flutter application consuming beers api to fetch and display a list of beers and their prices.
+publish_to: 'none'
+version: 1.0.0+1
+
+environment:
+  sdk: '>=2.18.6 <3.0.0'
+
+dependencies:
+  flutter:
+    sdk: flutter
+  cupertino_icons: ^1.0.2
+  get_it: ^7.2.0
+  flutter_bloc: ^8.1.1
+  equatable: ^2.0.5
+  dartz: ^0.10.1
+  http: ^0.13.5
+  mocktail: ^0.3.0
+  bloc_test: ^9.1.0
+  floor: ^1.4.1
+  floor_generator: ^1.3.0
+  internet_connection_checker: ^1.0.0+1
+  cached_network_image: ^3.2.3
+  sqflite_common_ffi: ^2.2.1
+
+dev_dependencies:
+  flutter_test:
+    sdk: flutter
+  flutter_lints: ^2.0.0
+  build_runner: ^2.1.2
+
+flutter:
+
+  uses-material-design: true
+
