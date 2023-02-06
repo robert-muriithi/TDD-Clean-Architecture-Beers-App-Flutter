@@ -1,8 +1,9 @@
 import 'package:equatable/equatable.dart';
 
-class Beers extends Equatable {
+import '../../data/datasources/local/entity/beers_entity.dart';
 
-  final String id;
+class Beers extends Equatable {
+  final int id;
   final String name;
   final String tagline;
   final String firstBrewed;
@@ -18,8 +19,8 @@ class Beers extends Equatable {
   final double attenuationLevel;
   final Volume volume;
   final BoilVolume boilVolume;
-  final Method method;
-  final Ingredients ingredients;
+  /*final Method method;
+  final Ingredients ingredients;*/
   final List<String> foodPairing;
   final String brewersTips;
   final String contributedBy;
@@ -41,8 +42,8 @@ class Beers extends Equatable {
     required this.attenuationLevel,
     required this.volume,
     required this.boilVolume,
-    required this.method,
-    required this.ingredients,
+    /*required this.method,
+    required this.ingredients,*/
     required this.foodPairing,
     required this.brewersTips,
     required this.contributedBy,
@@ -66,12 +67,64 @@ class Beers extends Equatable {
     attenuationLevel,
     volume,
     boilVolume,
-    method,
-    ingredients,
+    /*method,
+    ingredients,*/
     foodPairing,
     brewersTips,
     contributedBy,
   ];
+
+  BeersEntity  toEntity() {
+    return BeersEntity(
+      id: id,
+      name: name,
+      tagline: tagline,
+      firstBrewed: firstBrewed,
+      description: description,
+      imageUrl: imageUrl,
+      abv: abv,
+      ibu: ibu,
+      targetFg: targetFg,
+      targetOg: targetOg,
+      ebc: ebc,
+      srm: srm,
+      ph: ph,
+      attenuationLevel: attenuationLevel,
+      volume: volume,
+      boilVolume: boilVolume,
+      /*method: method,
+      ingredients: ingredients,*/
+      foodPairing: foodPairing,
+      brewersTips: brewersTips,
+      contributedBy: contributedBy,
+    );
+  }
+
+/*  factory Beers.fromJson(Map<String, dynamic> json) {
+    return Beers(
+      id: json['id'],
+      name: json['name'],
+      tagline: json['tagline'],
+      firstBrewed: json['first_brewed'],
+      description: json['description'],
+      imageUrl: json['image_url'],
+      abv: json['abv'],
+      ibu: json['ibu'],
+      targetFg: json['target_fg'],
+      targetOg: json['target_og'],
+      ebc: json['ebc'],
+      srm: json['srm'],
+      ph: json['ph'],
+      attenuationLevel: json['attenuation_level'],
+      volume: Volume.fromJson(json['volume']),
+      boilVolume: BoilVolume.fromJson(json['boil_volume']),
+      method: Method.fromJson(json['method']),
+      ingredients: Ingredients.fromJson(json['ingredients']),
+      foodPairing: List<String>.from(json['food_pairing'].map((x) => x)),
+      brewersTips: json['brewers_tips'],
+      contributedBy: json['contributed_by'],
+    );
+  }*/
 
 }
 
@@ -90,6 +143,13 @@ class Volume extends Equatable {
     value,
     unit,
   ];
+/*
+  factory Volume.fromJson(Map<String, dynamic> json) {
+    return Volume(
+      value: json['value'] as double,
+      unit: json['unit'] as String,
+    );
+  }*/
 }
 
 class BoilVolume extends Equatable {
@@ -106,13 +166,20 @@ class BoilVolume extends Equatable {
     value,
     unit,
   ];
+/*
+  factory BoilVolume.fromJson(Map<String, dynamic> json) {
+    return BoilVolume(
+      value: json['value'] as double,
+      unit: json['unit'] as String,
+    );
+  }*/
 }
 
 
 class Method extends Equatable {
-  final MashTemp mashTemp;
+  final List<MashTemp> mashTemp;
   final Fermentation fermentation;
-  final String twist;
+  final String? twist;
 
   const Method({
     required this.mashTemp,
@@ -126,11 +193,19 @@ class Method extends Equatable {
     fermentation,
     twist,
   ];
+
+/*  factory Method.fromJson(Map<String, dynamic> json) {
+    return Method(
+      mashTemp: MashTemp.fromJson(json['mash_temp'] as Map<String, dynamic>),
+      fermentation: Fermentation.fromJson(json['fermentation'] as Map<String, dynamic>),
+      twist: json['twist'] as String,
+    );
+  }*/
 }
 
 class MashTemp extends Equatable {
-  final double temp;
-  final int duration;
+  final Temp temp;
+  final int? duration;
 
   const MashTemp({
     required this.temp,
@@ -142,10 +217,34 @@ class MashTemp extends Equatable {
     temp,
     duration,
   ];
+/*
+  factory MashTemp.fromJson(Map<String, dynamic> json) {
+    return MashTemp(
+      temp: json['temp'] as double,
+      duration: json['duration'] as int,
+    );
+  }*/
+}
+
+class Temp extends Equatable {
+  final double value;
+  final String unit;
+
+  const Temp({
+    required this.value,
+    required this.unit,
+  });
+
+  @override
+  List<Object?> get props =>
+      [
+        value,
+        unit,
+      ];
 }
 
 class Fermentation extends Equatable {
-  final double temp;
+  final Temp temp;
 
   const Fermentation({
     required this.temp,
@@ -155,11 +254,17 @@ class Fermentation extends Equatable {
   List<Object?> get props => [
     temp,
   ];
+
+/*  factory Fermentation.fromJson(Map<String, dynamic> json) {
+    return Fermentation(
+      temp: json['temp'] as double,
+    );
+  }*/
 }
 
 class Ingredients extends Equatable {
-  final Malt malt;
-  final Hops hops;
+  final List<Malt> malt;
+  final List<Hops> hops;
   final String yeast;
 
   const Ingredients({
@@ -174,11 +279,19 @@ class Ingredients extends Equatable {
     hops,
     yeast,
   ];
+
+ /* factory Ingredients.fromJson(Map<String, dynamic> json) {
+    return Ingredients(
+      malt: Malt.fromJson(json['malt'] as Map<String, dynamic>),
+      hops: Hops.fromJson(json['hops'] as Map<String, dynamic>),
+      yeast: json['yeast'] as String,
+    );
+  }*/
 }
 
 class Malt extends Equatable {
   final String name;
-  final double amount;
+  final Amount amount;
 
   const Malt({
     required this.name,
@@ -190,11 +303,18 @@ class Malt extends Equatable {
     name,
     amount,
   ];
+
+/*  factory Malt.fromJson(Map<String, dynamic> json) {
+    return Malt(
+      name: json['name'] as String,
+      amount: json['amount'] as double,
+    );
+  }*/
 }
 
 class Hops extends Equatable {
   final String name;
-  final double amount;
+  final Amount amount;
   final String add;
   final String attribute;
 
@@ -212,6 +332,32 @@ class Hops extends Equatable {
     add,
     attribute,
   ];
+/*
+  factory Hops.fromJson(Map<String, dynamic> json) {
+    return Hops(
+      name: json['name'] as String,
+      amount: json['amount'] as double,
+      add: json['add'] as String,
+      attribute: json['attribute'] as String,
+    );
+  }*/
+}
+
+class Amount extends Equatable {
+  final double value;
+  final String unit;
+
+  const Amount({
+    required this.value,
+    required this.unit,
+  });
+
+  @override
+  List<Object?> get props =>
+      [
+        value,
+        unit,
+      ];
 }
 
 

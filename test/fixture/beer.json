@@ -1,0 +1,31 @@
+{
+  "id": 55,
+  "name": "Amarillo - IPA Is Dead",
+  "tagline": "Single Hop India Pale Ale.",
+  "first_brewed": "01/2013",
+  "description": "Citrus fruit. Lots of citrus fruit. Think blood orange, orange zest and grapefruit, tangerine and lemon; the fruit is balanced by floral notes in the most classic of new wave IPA hops. Amarillo adds a zesty, pithy character that sits beautifully alongside hints of toffee and honeycomb.",
+  "image_url": "https://images.punkapi.com/v2/55.png",
+  "abv": 7.2,
+  "ibu": 70,
+  "target_fg": 1012,
+  "target_og": 1067,
+  "ebc": 30,
+  "srm": 15,
+  "ph": 4.4,
+  "attenuation_level": 82.1,
+  "volume": {
+    "value": 20,
+    "unit": "litres"
+  },
+  "boil_volume": {
+    "value": 25,
+    "unit": "litres"
+  },
+  "food_pairing": [
+    "Bratwurst sausage with spicy mustard",
+    "Fried American bacon with chilli flakes added to the top",
+    "Dark chocolate chip cookies"
+  ],
+  "brewers_tips": "Use the freshest hops for the most impact. It seems obvious but in a single hop beer, you want the hops to be at their best.",
+  "contributed_by": "Sam Mason <samjbmason>"
+}

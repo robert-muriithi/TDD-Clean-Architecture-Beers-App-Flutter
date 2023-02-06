@@ -5,7 +5,7 @@ import 'package:beers_flutter/features/beers/domain/usecase/get_beers_usecase.da
 import 'package:dartz/dartz.dart';
 import 'package:mocktail/mocktail.dart';
 import 'package:flutter_test/flutter_test.dart';
-import '../../../../test_models.dart';
+import '../../../../fixture/beers.dart';
 
 class MockGetBeers extends Mock implements BeersRepository {}
 

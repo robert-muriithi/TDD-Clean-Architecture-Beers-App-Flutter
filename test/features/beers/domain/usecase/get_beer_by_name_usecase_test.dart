@@ -4,7 +4,7 @@ import 'package:dartz/dartz.dart';
 import 'package:flutter_test/flutter_test.dart';
 import 'package:mocktail/mocktail.dart';
 
-import '../../../../test_models.dart';
+import '../../../../fixture/beers.dart';
 
 class MockGetBeerByName extends Mock implements BeersRepository {}
 
