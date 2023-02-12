@@ -2,10 +2,11 @@ import 'package:beers_flutter/core/database/beers_database.dart';
 
 import '../../../../../core/error/exception.dart';
 import '../../../domain/model/beers.dart';
+import 'entity/beers_entity.dart';
 
 abstract class BeersLocalDataSource {
   Future<List<Beers>> getBeers();
-  Future<void> insertBeers(List<Beers> beers);
+  Future<void> insertBeers(List<BeersEntity> beers);
   Future<void> deleteBeers();
 }
 
@@ -21,29 +22,30 @@ class BeersLocalDataSourceImpl implements BeersLocalDataSource {
       final result = entity.then((value) => value.map((e) => e.toDomain()).toList());
       return result;
     } catch (e) {
-      throw DatabaseException("Can't get beers from database");
+      throw DatabaseException(e.toString());
     }
   }
 
   @override
-  Future<void> insertBeers(List<Beers> beers) {
+  Future<bool> insertBeers(List<BeersEntity> beers) {
     try{
       final beersDao = database.beersDao;
-      final result = beersDao.insertBeers(beers.map((e) => e.toEntity()).toList());
-      return result;
+     // final result = beersDao.insertBeers(beers.map((e) => e.toEntity()).toList());
+      beersDao.insertBeers(beers);
+      return Future.value(true);
     } catch (e) {
-      throw DatabaseException("Can't insert beers to database");
+      throw DatabaseException(e.toString());
     }
   }
 
   @override
-  Future<void> deleteBeers() {
+  Future<void> deleteBeers() async {
     try{
       final beersDao = database.beersDao;
-      final result = beersDao.deleteBeer();
+      final result = await beersDao.deleteAllBeers();
       return result;
     } catch (e) {
-      throw DatabaseException("Can't delete beers from database");
+      throw DatabaseException(e.toString());
     }
   }
 
