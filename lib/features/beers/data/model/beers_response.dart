@@ -8,18 +8,6 @@ class BeersModel extends Beers {
     required String firstBrewed,
     required String description,
     required String imageUrl,
-    required double abv,
-    required double ibu,
-    required double targetFg,
-    required double targetOg,
-    required double ebc,
-    required double srm,
-    required double ph,
-    required double attenuationLevel,
-    required Volume volume,
-    required BoilVolume boilVolume,
-/*    required Method method,
-    required Ingredients ingredients,*/
     required List<String> foodPairing,
     required String brewersTips,
     required String contributedBy,
@@ -30,18 +18,6 @@ class BeersModel extends Beers {
     firstBrewed: firstBrewed,
     description: description,
     imageUrl: imageUrl,
-    abv: abv,
-    ibu: ibu,
-    targetFg: targetFg,
-    targetOg: targetOg,
-    ebc: ebc,
-    srm: srm,
-    ph: ph,
-    attenuationLevel: attenuationLevel,
-    volume: volume,
-    boilVolume: boilVolume,
-    /*method: method,
-    ingredients: ingredients,*/
     foodPairing: foodPairing,
     brewersTips: brewersTips,
     contributedBy: contributedBy,
@@ -56,7 +32,9 @@ class BeersModel extends Beers {
       firstBrewed: json['first_brewed'] as String,
       description: json['description'] as String,
       imageUrl: json['image_url'] as String,
-      abv: (json['abv'] as num).toDouble(),
+      /*abv: json['abv'] as double,
+      ibu: json['ibu'] as int,*/
+      /*abv: (json['abv'] as num).toDouble(),
       ibu: (json['ibu'] as num).toDouble(),
       targetFg: (json['target_fg'] as num).toDouble(),
       targetOg: (json['target_og'] as num).toDouble(),
@@ -66,7 +44,7 @@ class BeersModel extends Beers {
       attenuationLevel: (json['attenuation_level'] as num).toDouble(),
       volume: VolumeModel.fromJson(json['volume'] as Map<String, dynamic>),
       boilVolume: BoilVolumeModel.fromJson(json['boil_volume'] as Map<String, dynamic>),
-      /*method: MethodModel.fromJson(json['method'] as Map<String, dynamic>),
+      *//*method: MethodModel.fromJson(json['method'] as Map<String, dynamic>),
       ingredients: IngredientsModel.fromJson(json['ingredients'] as Map<String, dynamic>),*/
       foodPairing: (json['food_pairing'] as List<dynamic>).map((e) => e as String).toList(),
       brewersTips: json['brewers_tips'] as String,
@@ -75,7 +53,7 @@ class BeersModel extends Beers {
   }
 
 }
-
+/*
 class VolumeModel extends Volume {
   const VolumeModel({
     required double value,
@@ -253,7 +231,7 @@ class AmountModel extends Amount {
       unit: json['unit'] as String,
     );
   }
-}
+}*/
 
 
 

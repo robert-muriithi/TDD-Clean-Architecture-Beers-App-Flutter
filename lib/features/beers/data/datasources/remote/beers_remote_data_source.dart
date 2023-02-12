@@ -1,19 +1,22 @@
 import 'package:beers_flutter/core/error/exception.dart';
 import 'package:beers_flutter/core/utils/constants.dart';
 import 'package:beers_flutter/features/beers/data/model/beers_response.dart';
+import 'package:logger/logger.dart';
 
 import '../../../domain/model/beers.dart';
 import 'package:dio/dio.dart';
 
 abstract class BeersRemoteDataSource {
-  Future<List<Beers>> getBeers();
-  Future<Beers> getBeerById(int id);
+  Future<List<BeersModel>> getBeers();
+/*  Future<Beers> getBeerById(int id);*/
 }
 
 class BeersRemoteDataSourceImpl implements BeersRemoteDataSource {
-  final dio = Dio();
+  final Dio dio;
+  BeersRemoteDataSourceImpl({required this.dio});
 
-  @override
+
+/*  @override
   Future<Beers> getBeerById(int id) async {
     try{
       final result = await dio.get('${Constants.kBaseUrl}/beers/$id');
@@ -22,13 +25,20 @@ class BeersRemoteDataSourceImpl implements BeersRemoteDataSource {
     }catch (e) {
       throw ServerException("Can't get beer by id");
     }
-  }
+  }*/
 
   @override
-  Future<List<Beers>> getBeers() async{
-    final response = await dio.get('${Constants.kBaseUrl}/beers');
-    final beers = response.data;
-    return beers.map((e) => BeersModel.fromJson(e)).toList();
-  }
+  Future<List<BeersModel>> getBeers() async{
+    final log = Logger();
+    try{
+      final result = await dio.get('${Constants.kBaseUrl}/beers');
+      final beers = result.data as List;
+      final data =  beers.map((e) => BeersModel.fromJson(e)).toList();
+      log.d('data $data');
+      return data;
+    } catch (e) {
+      throw ServerException(e.toString());
+    }
 
+  }
 }
