@@ -5,6 +5,7 @@ import '../../../../core/usecase/usecase.dart';
 import '../model/beers.dart';
 import '../repository/beers_repository.dart';
 
+/*
 class GetBeerByNameUseCase implements UseCase<Beers, Params> {
   final BeersRepository repository;
 
@@ -12,15 +13,15 @@ class GetBeerByNameUseCase implements UseCase<Beers, Params> {
 
   @override
   Future<Either<Failure, Beers>> call(Params params) async {
-    return await repository.getBeerByName(params.name);
+    return await repository.getBeerByName(params.id);
   }
 }
 
 class Params extends Equatable {
-  final String name;
+  final int id;
 
-  const Params(this.name);
+  const Params(this.id);
 
   @override
-  List<Object?> get props => [name];
-}
+  List<Object?> get props => [id];
+}*/

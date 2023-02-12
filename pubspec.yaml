@@ -23,6 +23,8 @@ dependencies:
   cached_network_image: ^3.2.3
   sqflite_common_ffi: ^2.2.1
   dio: ^4.0.6
+  flutter_spinkit: ^5.1.0
+  logger: ^1.1.0
 
 dev_dependencies:
   flutter_test:
