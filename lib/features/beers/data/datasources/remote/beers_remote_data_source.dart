@@ -16,17 +16,6 @@ class BeersRemoteDataSourceImpl implements BeersRemoteDataSource {
   BeersRemoteDataSourceImpl({required this.dio});
 
 
-/*  @override
-  Future<Beers> getBeerById(int id) async {
-    try{
-      final result = await dio.get('${Constants.kBaseUrl}/beers/$id');
-      final beer = result.data;
-      return BeersModel.fromJson(beer);
-    }catch (e) {
-      throw ServerException("Can't get beer by id");
-    }
-  }*/
-
   @override
   Future<List<BeersModel>> getBeers() async{
     final log = Logger();
@@ -34,7 +23,6 @@ class BeersRemoteDataSourceImpl implements BeersRemoteDataSource {
       final result = await dio.get('${Constants.kBaseUrl}/beers');
       final beers = result.data as List;
       final data =  beers.map((e) => BeersModel.fromJson(e)).toList();
-      log.d('data $data');
       return data;
     } catch (e) {
       throw ServerException(e.toString());

@@ -5,7 +5,7 @@ import 'beer_item.dart';
 
 
 class BeersListWidget extends StatelessWidget {
-  const BeersListWidget({Key? key, required this.beers}) : super(key: key);
+   BeersListWidget({Key? key, required this.beers}) : super(key: key);
   final List<Beers> beers;
 
   @override
@@ -23,7 +23,7 @@ class BeersListWidget extends StatelessWidget {
         ),
        children: [
          for (var beer in beers)
-           BeerItem(beer: beer)
+           BeerItem(beer: beer,)
        ]
     );
 

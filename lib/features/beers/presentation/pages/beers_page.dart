@@ -17,6 +17,15 @@ class BeersPage extends StatelessWidget {
     return Scaffold(
       appBar: AppBar(
         title: const Text('Beers'),
+        elevation: 1,
+        actions: [
+          IconButton(
+              onPressed: (){
+
+              },
+              icon: const Icon(Icons.search)
+          ),
+        ],
       ),
       body: buildBody(context),
     );

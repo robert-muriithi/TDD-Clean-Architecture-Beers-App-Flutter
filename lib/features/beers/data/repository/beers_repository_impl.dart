@@ -24,24 +24,6 @@ class BeersRepositoryImpl implements BeersRepository {
   @override
   Future<Either<Failure, List<Beers>>> getBeers() async {
     final log = Logger();
-
-    // Offline Caching
-    /*val fromdb
-
-    try {
-      val networkResponse
-
-      deleteFromDb
-      insert
-      readFromDb
-
-      Return that value
-
-    }catch{
-      return data from local db
-    }*/
-
-
     if(await networkInfo.isConnected){
       try{
         final remoteData = await remoteDataSource.getBeers();
