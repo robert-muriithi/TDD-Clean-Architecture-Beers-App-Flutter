@@ -1,6 +1,7 @@
 import 'package:beers_flutter/features/beers/domain/model/beers.dart';
 import 'package:beers_flutter/features/beers/presentation/routes/routes.dart';
 import 'package:flutter/material.dart';
+import 'package:cached_network_image/cached_network_image.dart';
 
 class BeerItem extends StatelessWidget {
    BeerItem({Key? key, required this.beer}) : super(key: key);
@@ -51,8 +52,8 @@ class BeerItem extends StatelessWidget {
                 Expanded(
                   child: Container(
                     padding: const EdgeInsets.all(10.0),
-                    child: Image.network(
-                      beer.imageUrl,
+                    child: CachedNetworkImage(
+                      imageUrl: beer.imageUrl,
                       fit: BoxFit.cover,
                     ),
                   ),
